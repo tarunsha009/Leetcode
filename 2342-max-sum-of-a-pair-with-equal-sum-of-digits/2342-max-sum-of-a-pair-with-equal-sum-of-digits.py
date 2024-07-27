@@ -4,22 +4,16 @@ class Solution:
             digit_sum = 0
             while num:
                 digit_sum += num % 10
-                num //=10
+                num //= 10
+            
             return digit_sum
-
-        dict = defaultdict(list)
+        
+        dic = defaultdict(int)
+        ans = -1
         for num in nums:
             digit_sum = get_digit_sum(num)
-            dict[digit_sum].append(num)
-
-        # print(dict)
-        ans = -1
-        for key in dict:
-            curr = dict[key]
-            print(curr)
-            if len(curr) > 1:
-                curr.sort(reverse=True)
-                print(curr)
-                ans = max(ans, curr[0] + curr[1])
+            if digit_sum in dic:
+                ans = max(ans, num + dic[digit_sum])
+            dic[digit_sum] = max(dic[digit_sum], num)
 
         return ans
