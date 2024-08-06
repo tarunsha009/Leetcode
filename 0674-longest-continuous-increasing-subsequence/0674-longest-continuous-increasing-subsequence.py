@@ -10,5 +10,5 @@ class Solution:
                 max_len = max(max_len, count)
                 count = 1
 
-        return max_len
+        return 1 if max_len < 0 else max_len
         
